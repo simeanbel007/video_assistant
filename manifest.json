@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "视频助手",
+  "version": "1.0.0",
+  "description": "辅助学习工具",
+  "permissions": [
+    "storage",
+    "notifications",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "*://*.chaoxing.com/*",
+    "*://*.edu.cn/*"
+  ],
+  "background": {
+    "service_worker": "sw.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "打开面板"
+  },
+  "content_scripts": [{
+    "matches": ["*://*.chaoxing.com/*", "*://*.edu.cn/*"],
+    "js": ["content.js"],
+    "run_at": "document_idle",
+    "all_frames": true
+  }]
+}
